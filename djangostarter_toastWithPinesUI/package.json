@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "alpinejs": "^3.14.9",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0",
+    "concurrently": "^8.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:css": "npx tailwindcss -i ./static/src/css/styles.css -o ./static/dist/css/styles.css --watch",
+    "watch:js": "npx esbuild ./static/src/js/main.js --bundle --outfile=./static/dist/js/main.js --watch",
+    "build:css": "npx tailwindcss -i ./static/src/css/styles.css -o ./static/dist/css/styles.css --minify",
+    "build:js": "npx esbuild ./static/src/js/main.js --bundle --outfile=./static/dist/js/main.js --minify",
+    "start": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "build": "npm run build:css && npm run build:js",
+    "dev": "npm run start"
+  }
+}
